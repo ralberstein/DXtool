@@ -14,7 +14,7 @@ COMING SOON
 
 **Classes:**
 
-	`Volume` : Primary container class for DX volume data.
+	Volume : Primary container class for DX volume data.
 
 **Volume functions**:
 ```

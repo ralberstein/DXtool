@@ -71,10 +71,14 @@ Library functions:
 	join3D(vollist1:list, vollist2:list) -> Volume
 		Takes in two lists each containing four Volumes. Runs join2D on each set of four Volumes independently, then joins those merged Volumes along the z axis. This allows one to take 8 subvolumes (that span a continuous range of xyz coordinates) and merge them into a single larger Volume without loss of information.
 
+	voladd(vol1:Volume, vol2:Volume, [options]) -> None
+		Takes in two Volumes and adds vol2 to vol1 voxel-wise, then returns vol1. This method WILL modify vol1 in-place, so make a new Volume object first if you do not want to overwrite the original vol1 data. This method DOES NOT do interpolation, so this method requires that Volumes have at least some matching coordinate indices. Can sum as either intersection (method=="inner") or the union (method="outer") of the volumes, where the latter requires a default value to fill into any empty voxels produced by incomplete overlap of the Volume coordinates. Set trim_intersect=True to trim vol1 to the exact dimensions of the intersection, else intersecting voxels will be summed while leaving the rest untouched.
+
 TODO:
 1) Convert volslice, project to Volume class functions
-2) More detailed documentation for functions
-3) Add more explicit error handling & unit tests
+2) Finish implementing volsub/mult/div functions
+3) More detailed documentation
+4) Add more explicit error handling & unit tests
 """
 
 #__future__ goes here if it was ever needed
